@@ -1,0 +1,14 @@
+node_modules/
+dist/
+.env
+.DS_Store
+*.log
+client/node_modules/
+server/node_modules/
+
+# Local image optimizer backups (originals kept on disk, not in repo)
+client/.image-backup/
+
+# Raw source media (large videos / originals) — not needed to run the app
+ImgVideo/
+_diag_foot.png

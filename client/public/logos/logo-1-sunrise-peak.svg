@@ -1,0 +1,43 @@
+<svg width="480" height="150" viewBox="0 0 480 150" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Cormorant Garamond', serif">
+  <defs>
+    <linearGradient id="g1gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f8d27a"/>
+      <stop offset="1" stop-color="#d99211"/>
+    </linearGradient>
+    <clipPath id="g1clip"><circle cx="75" cy="75" r="50"/></clipPath>
+  </defs>
+
+  <!-- Emblem -->
+  <circle cx="75" cy="75" r="58" fill="#ffffff" stroke="#edae2b" stroke-width="2.5"/>
+  <g clip-path="url(#g1clip)">
+    <rect x="25" y="25" width="100" height="100" fill="#fffaf0"/>
+    <!-- sun -->
+    <circle cx="75" cy="86" r="26" fill="url(#g1gold)"/>
+    <!-- sun rays -->
+    <g stroke="#edae2b" stroke-width="2.4" stroke-linecap="round" opacity="0.8">
+      <line x1="75" y1="34" x2="75" y2="44"/>
+      <line x1="50" y1="44" x2="56" y2="52"/>
+      <line x1="100" y1="44" x2="94" y2="52"/>
+    </g>
+    <!-- mountains -->
+    <path d="M25 110 L52 74 L70 96 L92 60 L125 110 Z" fill="#0f1f3d"/>
+    <path d="M25 112 L46 86 L62 104 L84 78 L106 104 L125 112 L125 125 L25 125 Z" fill="#1f3a6e"/>
+    <!-- snow caps -->
+    <path d="M92 60 L84 70 L89 72 L94 66 L99 72 L92 60Z" fill="#ffffff" opacity="0.9"/>
+    <!-- birds -->
+    <g stroke="#0f1f3d" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.7">
+      <path d="M40 50 q4 -4 8 0 q4 -4 8 0"/>
+      <path d="M96 44 q3 -3 6 0 q3 -3 6 0"/>
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="158" y="76" font-size="44" font-weight="700">
+    <tspan fill="#0f1f3d">My</tspan><tspan fill="#edae2b" font-family="'Segoe Script','Brush Script MT',cursive" font-style="italic" dx="2">Soul</tspan><tspan fill="#0f1f3d" dx="2">Trip</tspan>
+  </text>
+  <g>
+    <line x1="159" y1="96" x2="183" y2="96" stroke="#edae2b" stroke-width="2"/>
+    <text x="190" y="100" font-size="12.5" letter-spacing="3" fill="#1f3a6e" font-family="Arial, sans-serif">TRAVEL · EXPLORE · REMEMBER</text>
+    <line x1="446" y1="96" x2="470" y2="96" stroke="#edae2b" stroke-width="2"/>
+  </g>
+</svg>

@@ -1,0 +1,17 @@
+{
+  "name": "mysoultrip-server",
+  "version": "1.0.0",
+  "description": "MySoulTrip backend API",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.2",
+    "nodemailer": "^8.0.11"
+  }
+}

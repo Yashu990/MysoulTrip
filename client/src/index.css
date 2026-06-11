@@ -1,0 +1,162 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Dancing+Script:wght@700&family=Manrope:wght@400;500;600;700;800&display=swap");
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Cormorant Garamond", ui-serif, Georgia, serif;
+  --font-script: "Dancing Script", cursive;
+
+  --container-6xl: 78rem;
+  --container-7xl: 90rem;
+
+  --color-cream-50: #fffdf8;
+  --color-cream-100: #fbf4e7;
+  --color-navy-50: #f5f7fb;
+  --color-navy-100: #d4ddf3;
+  --color-navy-600: #1f3a6e;
+  --color-navy-700: #16294f;
+  --color-navy-800: #0f1f3d;
+  --color-navy-900: #0a1730;
+
+  --color-gold-300: #f8d27a;
+  --color-gold-400: #f5bc4a;
+  --color-gold-500: #edae2b;
+  --color-gold-600: #d99211;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: var(--font-sans);
+  color: #1f2937;
+  background:
+    radial-gradient(circle at top, rgba(237, 174, 43, 0.08), transparent 28%),
+    linear-gradient(180deg, #fffdf8 0%, #ffffff 22%, #ffffff 100%);
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.section-shell {
+  width: min(100% - 2rem, 90rem);
+  margin-inline: auto;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ============================================================ *
+ *  Motion / "pro max" visual utilities
+ * ============================================================ */
+
+/* Animated gold→navy gradient text for headline accents */
+@keyframes shimmer-text {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+.text-gradient-gold {
+  background: linear-gradient(90deg, #f8d27a, #edae2b, #f5bc4a, #d99211, #f8d27a);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: shimmer-text 5s linear infinite;
+}
+
+/* Slow-drifting aurora background blobs */
+@keyframes float-slow {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(18px, -26px, 0) scale(1.08); }
+}
+.animate-float-slow { animation: float-slow 11s ease-in-out infinite; }
+
+@keyframes float-slower {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  50% { transform: translate3d(-22px, 20px, 0) scale(1.12); }
+}
+.animate-float-slower { animation: float-slower 15s ease-in-out infinite; }
+
+/* Conic "spotlight" sweep used behind feature highlights */
+@keyframes spin-slow {
+  to { transform: rotate(360deg); }
+}
+.animate-spin-slow { animation: spin-slow 22s linear infinite; }
+
+/* Soft pulsing glow ring */
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.45; transform: scale(1); }
+  50% { opacity: 0.85; transform: scale(1.06); }
+}
+.animate-pulse-glow { animation: pulse-glow 3.5s ease-in-out infinite; }
+
+/* Marquee for scrolling strips */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee { animation: marquee 28s linear infinite; }
+
+/* Frosted glass card surface */
+.glass {
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+}
+.glass-dark {
+  background: rgba(10, 23, 48, 0.42);
+  backdrop-filter: blur(14px) saturate(140%);
+  -webkit-backdrop-filter: blur(14px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Animated gradient border wrapper */
+.gradient-border {
+  position: relative;
+  background-clip: padding-box;
+}
+.gradient-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: linear-gradient(130deg, rgba(237,174,43,0.9), rgba(255,255,255,0.15), rgba(237,174,43,0.6));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* Honour reduced-motion: stop all decorative loops */
+@media (prefers-reduced-motion: reduce) {
+  .text-gradient-gold,
+  .animate-float-slow,
+  .animate-float-slower,
+  .animate-spin-slow,
+  .animate-pulse-glow,
+  .animate-marquee {
+    animation: none !important;
+  }
+}

@@ -1,0 +1,28 @@
+<svg width="480" height="160" viewBox="0 0 480 160" fill="none" xmlns="http://www.w3.org/2000/svg" font-family="Georgia, 'Cormorant Garamond', serif">
+  <defs>
+    <linearGradient id="g2gold" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#f5bc4a"/>
+      <stop offset="1" stop-color="#d99211"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Lotus / peak emblem -->
+  <g transform="translate(80,72)">
+    <!-- side petals -->
+    <path d="M0 18 C-34 6 -46 -22 -40 -40 C-20 -34 -4 -10 0 18 Z" fill="url(#g2gold)" opacity="0.85"/>
+    <path d="M0 18 C34 6 46 -22 40 -40 C20 -34 4 -10 0 18 Z" fill="url(#g2gold)" opacity="0.85"/>
+    <path d="M0 18 C-24 8 -34 -26 -24 -48 C-8 -34 -2 -8 0 18 Z" fill="#edae2b"/>
+    <path d="M0 18 C24 8 34 -26 24 -48 C8 -34 2 -8 0 18 Z" fill="#edae2b"/>
+    <!-- center petal as a mountain peak -->
+    <path d="M0 20 L-16 18 L0 -52 L16 18 Z" fill="#0f1f3d"/>
+    <path d="M0 -52 L-7 -32 L0 -28 L7 -32 Z" fill="#ffffff"/>
+    <!-- water reflection line -->
+    <path d="M-46 26 H46" stroke="#1f3a6e" stroke-width="2.4" stroke-linecap="round" opacity="0.5"/>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="150" y="78" font-size="42" font-weight="700">
+    <tspan fill="#0f1f3d">My</tspan><tspan fill="#edae2b" font-family="'Segoe Script','Brush Script MT',cursive" font-style="italic" dx="2">Soul</tspan><tspan fill="#0f1f3d" dx="2">Trip</tspan>
+  </text>
+  <text x="151" y="100" font-size="12.5" letter-spacing="3.4" fill="#1f3a6e" font-family="Arial, sans-serif">F I N D · Y O U R · S O U L</text>
+</svg>
