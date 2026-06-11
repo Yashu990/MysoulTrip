@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Headset, Mail, ShieldCheck, Phone, MapPin, Clock, Whatsapp, ArrowRight, Compass } from './icons'
 import { Reveal, Stagger, StaggerItem, motion } from './motion'
+import FallingLeaves from './FallingLeaves'
 
 const trustPoints = [
   { icon: Headset, title: '24/7 Support', text: 'We are always here for you' },
@@ -56,6 +57,7 @@ export default function ContactPage({ onPlan, onSubmitMessage }) {
           />
           <div className="absolute inset-0 bg-gradient-to-r from-white via-white/78 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-900/18 to-transparent" />
+          <FallingLeaves />
 
           <div className="relative grid min-h-[18rem] items-end px-6 py-8 sm:px-10 sm:py-10 lg:min-h-[20rem] lg:max-w-[58%]">
             <motion.div
@@ -126,13 +128,14 @@ export default function ContactPage({ onPlan, onSubmitMessage }) {
           </div>
         </StaggerItem>
 
-        <StaggerItem className="rounded-[1.6rem] bg-white px-5 py-6 shadow-[0_14px_40px_rgba(15,31,61,0.08)] ring-1 ring-black/5 sm:px-6">
-          <div className="mb-6 flex items-center gap-3">
+        <StaggerItem className="relative overflow-hidden rounded-[1.6rem] bg-gradient-to-br from-white/85 to-cream-50/80 px-5 py-6 shadow-[0_14px_40px_rgba(15,31,61,0.08)] ring-1 ring-white/50 backdrop-blur-xl sm:px-6">
+          <FallingLeaves />
+          <div className="relative z-10 mb-6 flex items-center gap-3">
             <h2 className="text-[1.65rem] font-extrabold uppercase tracking-tight text-navy-800">Send Us a Message</h2>
             <span className="mt-1 h-0.5 w-12 rounded bg-gold-500" />
           </div>
 
-          <form onSubmit={submit} className="space-y-4">
+          <form onSubmit={submit} className="relative z-10 space-y-4">
             <div className="grid gap-4 md:grid-cols-2">
               <input
                 type="text"

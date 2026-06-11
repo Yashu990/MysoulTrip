@@ -102,36 +102,28 @@ function thankYouText(name) {
   ].join('\n')
 }
 
-// Internal notification with the full enquiry details for the team inbox.
-function teamNotificationHtml(form) {
-  const detailRow = (label, value, isLast) => `
+// --- Shared building blocks for the internal team notification -----------------
+const detailRow = (label, value, isLast) => `
         <tr>
           <td style="padding:14px 24px;font-size:12px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;color:#6b7280;width:120px;vertical-align:top;border-bottom:${isLast ? 'none' : '1px solid #eef0f3'};">${label}</td>
           <td style="padding:14px 24px;font-size:15px;color:#111827;vertical-align:top;border-bottom:${isLast ? 'none' : '1px solid #eef0f3'};white-space:pre-wrap;word-break:break-word;">${value}</td>
         </tr>`
 
-  const emailCell = form.email
-    ? `<a href="mailto:${escapeHtml(form.email)}" style="color:#c79a3a;text-decoration:none;font-weight:600;">${escapeHtml(form.email)}</a>`
-    : '—'
-  const phoneCell = form.phone
-    ? `<a href="tel:${escapeHtml(form.phone)}" style="color:#111827;text-decoration:none;">${escapeHtml(form.phone)}</a>`
-    : '—'
+const emailCell = (email) =>
+  email ? `<a href="mailto:${escapeHtml(email)}" style="color:#c79a3a;text-decoration:none;font-weight:600;">${escapeHtml(email)}</a>` : '—'
+const phoneCell = (phone) =>
+  phone ? `<a href="tel:${escapeHtml(phone)}" style="color:#111827;text-decoration:none;">${escapeHtml(phone)}</a>` : '—'
 
-  const rows = [
-    detailRow('Name', escapeHtml(form.name || '—')),
-    detailRow('Email', emailCell),
-    detailRow('Phone', phoneCell),
-    detailRow('Subject', escapeHtml(form.subject || '—')),
-    detailRow('Message', escapeHtml(form.message || '—'), true),
-  ].join('')
-
-  const replyButton = form.email
+// Generic branded notification shell — used by both the contact form and the
+// "Plan Your Trip" enquiry, just with different rows + heading.
+function notificationShell({ tag, heading, intro, rows, replyTo, replyName, replySubject }) {
+  const replyButton = replyTo
     ? `
               <tr>
                 <td style="padding:8px 24px 28px;">
-                  <a href="mailto:${escapeHtml(form.email)}?subject=${encodeURIComponent(`Re: ${form.subject || 'Your enquiry'} — ${escapeHtml(BRAND_NAME)}`)}"
+                  <a href="mailto:${escapeHtml(replyTo)}?subject=${encodeURIComponent(`Re: ${replySubject || 'Your enquiry'} — ${BRAND_NAME}`)}"
                      style="display:inline-block;background:#0f1722;color:#ffffff;font-size:14px;font-weight:700;text-decoration:none;padding:12px 26px;border-radius:8px;">
-                    Reply to ${escapeHtml((form.name || 'enquirer').split(' ')[0])} &rarr;
+                    Reply to ${escapeHtml((replyName || 'enquirer').split(' ')[0])} &rarr;
                   </a>
                 </td>
               </tr>`
@@ -144,33 +136,23 @@ function teamNotificationHtml(form) {
       <tr>
         <td align="center">
           <table role="presentation" width="620" cellpadding="0" cellspacing="0" style="max-width:620px;width:100%;background:#ffffff;border-radius:14px;overflow:hidden;box-shadow:0 10px 36px rgba(15,23,34,0.10);">
-            <!-- Brand header -->
             <tr>
               <td style="background:#0f1722;padding:26px 24px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
                   <tr>
-                    <td style="font-size:20px;font-weight:800;color:#ffffff;letter-spacing:0.02em;">
-                      ${escapeHtml(BRAND_NAME)}
-                    </td>
-                    <td align="right" style="font-size:12px;font-weight:600;color:#c79a3a;text-transform:uppercase;letter-spacing:0.08em;">
-                      New Enquiry
-                    </td>
+                    <td style="font-size:20px;font-weight:800;color:#ffffff;letter-spacing:0.02em;">${escapeHtml(BRAND_NAME)}</td>
+                    <td align="right" style="font-size:12px;font-weight:600;color:#c79a3a;text-transform:uppercase;letter-spacing:0.08em;">${tag}</td>
                   </tr>
                 </table>
               </td>
             </tr>
-            <!-- Accent bar -->
             <tr><td style="height:4px;background:#c79a3a;font-size:0;line-height:0;">&nbsp;</td></tr>
-            <!-- Intro -->
             <tr>
               <td style="padding:26px 24px 6px;">
-                <h1 style="margin:0 0 6px;font-size:19px;color:#0f1722;font-weight:700;">You have a new contact enquiry</h1>
-                <p style="margin:0;font-size:14px;color:#6b7280;line-height:1.5;">
-                  A visitor submitted the contact form on the website. Details are below.
-                </p>
+                <h1 style="margin:0 0 6px;font-size:19px;color:#0f1722;font-weight:700;">${heading}</h1>
+                <p style="margin:0;font-size:14px;color:#6b7280;line-height:1.5;">${intro}</p>
               </td>
             </tr>
-            <!-- Details card -->
             <tr>
               <td style="padding:18px 24px 4px;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #eef0f3;border-radius:10px;overflow:hidden;">
@@ -179,12 +161,10 @@ function teamNotificationHtml(form) {
               </td>
             </tr>
             ${replyButton}
-            <!-- Footer -->
             <tr>
               <td style="background:#f7f8fa;padding:18px 24px;border-top:1px solid #eef0f3;">
                 <p style="margin:0;font-size:12px;color:#9aa1ad;line-height:1.5;">
-                  This enquiry was generated automatically from the ${escapeHtml(BRAND_NAME)} website contact form.
-                  Reply directly to this email to respond to the visitor.
+                  Generated automatically from the ${escapeHtml(BRAND_NAME)} website. Reply directly to this email to respond to the visitor.
                 </p>
               </td>
             </tr>
@@ -194,6 +174,40 @@ function teamNotificationHtml(form) {
     </table>
   </body>
 </html>`
+}
+
+// Contact-form notification.
+function teamNotificationHtml(form) {
+  const rows = [
+    detailRow('Name', escapeHtml(form.name || '—')),
+    detailRow('Email', emailCell(form.email)),
+    detailRow('Phone', phoneCell(form.phone)),
+    detailRow('Subject', escapeHtml(form.subject || '—')),
+    detailRow('Message', escapeHtml(form.message || '—'), true),
+  ].join('')
+  return notificationShell({
+    tag: 'New Contact Message', heading: 'You have a new contact enquiry',
+    intro: 'A visitor submitted the contact form on the website. Details are below.',
+    rows, replyTo: form.email, replyName: form.name, replySubject: form.subject || 'Your enquiry',
+  })
+}
+
+// "Plan Your Trip" enquiry notification.
+function enquiryNotificationHtml(form) {
+  const rows = [
+    detailRow('Name', escapeHtml(form.name || '—')),
+    detailRow('Email', emailCell(form.email)),
+    detailRow('Phone', phoneCell(form.phone)),
+    detailRow('Destination', escapeHtml(form.destination || '—')),
+    detailRow('Travellers', escapeHtml(form.travelers || '—'), !form.source),
+    ...(form.source ? [detailRow('Source', escapeHtml(form.source), true)] : []),
+  ].join('')
+  return notificationShell({
+    tag: 'New Trip Enquiry', heading: 'You have a new trip enquiry',
+    intro: 'A visitor submitted the “Plan Your Trip” form on the website. Details are below.',
+    rows, replyTo: form.email, replyName: form.name,
+    replySubject: form.destination ? `Your ${form.destination} trip` : 'Your trip enquiry',
+  })
 }
 
 /**
@@ -238,6 +252,50 @@ export async function sendContactEmails(form) {
     return { sent: true, info }
   } catch (error) {
     console.error('[mailer] Failed to send contact emails:', error.message)
+    return { sent: false, reason: error.message }
+  }
+}
+
+/**
+ * Send emails for a "Plan Your Trip" enquiry: a thank-you to the visitor (if an
+ * email was provided) and a detailed notification to the team inbox.
+ */
+export async function sendEnquiryEmails(form) {
+  const tx = getTransporter()
+  if (!tx) return { sent: false, reason: 'smtp-not-configured' }
+
+  try {
+    const tasks = []
+
+    if (form.email) {
+      tasks.push(
+        tx.sendMail({
+          from: fromAddress(),
+          to: form.email,
+          subject: `Thank you for your enquiry — ${BRAND_NAME}!`,
+          text: thankYouText(form.name),
+          html: thankYouHtml(form.name),
+        }),
+      )
+    }
+
+    const teamInbox = MAIL_TO || SMTP_USER
+    if (teamInbox) {
+      tasks.push(
+        tx.sendMail({
+          from: fromAddress(),
+          to: teamInbox,
+          replyTo: form.email || undefined,
+          subject: `New trip enquiry${form.destination ? `: ${form.destination}` : ''} — ${form.name || 'Website'}`,
+          html: enquiryNotificationHtml(form),
+        }),
+      )
+    }
+
+    const info = await Promise.all(tasks)
+    return { sent: true, info }
+  } catch (error) {
+    console.error('[mailer] Failed to send enquiry emails:', error.message)
     return { sent: false, reason: error.message }
   }
 }

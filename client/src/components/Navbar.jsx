@@ -6,18 +6,19 @@ const links = [
   { label: 'Home', href: '/' },
   { label: 'Destinations', href: '/destinations', caret: true, page: 'destinations' },
   { label: 'Packages', href: '/packages', page: 'packages' },
-  { label: 'Group Tours', href: '/#tours' },
-  { label: 'Spiritual Retreats', href: '/#experiences' },
-  { label: 'Blog', href: '/#stories' },
-  { label: 'About Us', href: '/#why' },
+  { label: 'Group Tours', href: '/group-tours', page: 'group-tours' },
+  { label: 'Blog', href: '/blog', page: 'blog' },
   { label: 'Contact Us', href: '/contact-us', page: 'contact' },
 ]
 
 function isActiveLink(link, currentPage) {
   if (link.page === 'destinations') return currentPage === 'destinations' || currentPage === 'spiritual'
+  if (link.page === 'blog') return currentPage === 'blog' || currentPage === 'blog-post'
+  if (link.page === 'packages') return currentPage === 'packages' || currentPage === 'package-detail'
   if (link.page) return currentPage === link.page
   if (link.href === '/') return currentPage === 'home'
-  return currentPage === 'home' && link.href.startsWith('/#')
+  // Section-scroll links (/#...) are not pages — never force them "active".
+  return false
 }
 
 export default function Navbar({ currentPage = 'home', onEnquire }) {
@@ -47,21 +48,21 @@ export default function Navbar({ currentPage = 'home', onEnquire }) {
       >
         <Logo />
 
-        <nav className="hidden items-center gap-7 text-[13px] font-semibold text-navy-700 lg:flex">
+        <nav className="hidden items-center gap-9 text-[14px] font-semibold text-navy-700 lg:flex">
           {links.map((l) => {
             const active = isActiveLink(l, currentPage)
             return (
               <a
                 key={l.label}
                 href={l.href}
-                className={`relative flex items-center gap-1 py-1 transition-colors after:absolute after:-bottom-1 after:left-0 after:h-0.5 after:bg-gold-500 after:transition-all ${
+                className={`relative flex items-center gap-1 py-1 transition-colors after:absolute after:-bottom-1.5 after:left-0 after:h-[2.5px] after:rounded-full after:bg-gold-500 after:transition-all after:duration-300 ${
                   active
                     ? 'text-gold-600 after:w-full'
-                    : 'hover:text-gold-600 after:w-0 hover:after:w-full'
+                    : 'text-navy-700 hover:text-gold-600 after:w-0 hover:after:w-full'
                 }`}
               >
                 {l.label}
-                {l.caret && <ChevronDown className="h-3.5 w-3.5 opacity-60" />}
+                {l.caret && <ChevronDown className={`h-3.5 w-3.5 transition-transform ${active ? 'opacity-80' : 'opacity-50'}`} />}
               </a>
             )
           })}

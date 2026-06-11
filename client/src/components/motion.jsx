@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { motion, useMotionValue, useSpring, useTransform, useReducedMotion } from 'framer-motion'
 
 /**
@@ -201,6 +202,52 @@ export function WordReveal({ text, className = '', delay = 0, highlightClassName
           </motion.span>
         </span>
       ))}
+    </span>
+  )
+}
+
+// Typewriter — types text out character by character with a blinking caret.
+// Collapses to the full text instantly under reduced-motion.
+export function Typewriter({ text = '', speed = 45, startDelay = 150, className = '', caret = true }) {
+  const reduce = useReducedMotion()
+  const [out, setOut] = useState(reduce ? text : '')
+  const [done, setDone] = useState(reduce)
+
+  useEffect(() => {
+    if (reduce) {
+      setOut(text)
+      setDone(true)
+      return
+    }
+    setOut('')
+    setDone(false)
+    let i = 0
+    let interval
+    const start = setTimeout(() => {
+      interval = setInterval(() => {
+        i += 1
+        setOut(text.slice(0, i))
+        if (i >= text.length) {
+          clearInterval(interval)
+          setDone(true)
+        }
+      }, speed)
+    }, startDelay)
+    return () => {
+      clearTimeout(start)
+      clearInterval(interval)
+    }
+  }, [text, speed, startDelay, reduce])
+
+  return (
+    <span className={className}>
+      {out}
+      {caret && (
+        <span
+          className="ml-0.5 inline-block w-[2px] -translate-y-[1px] self-stretch bg-current align-middle"
+          style={{ height: '1em', animation: done ? 'tw-blink 1s step-end infinite' : 'none', opacity: done ? undefined : 1 }}
+        />
+      )}
     </span>
   )
 }

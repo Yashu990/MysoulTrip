@@ -13,7 +13,7 @@ import {
   instagram,
   homePayload,
 } from './data.js'
-import { sendContactEmails } from './mailer.js'
+import { sendContactEmails, sendEnquiryEmails } from './mailer.js'
 
 const app = express()
 const PORT = process.env.PORT || 5000
@@ -42,10 +42,16 @@ const messages = []
 const bookings = []
 const subscribers = []
 
-app.post('/api/enquiry', (req, res) => {
+app.post('/api/enquiry', async (req, res) => {
   const entry = { ...req.body, at: new Date().toISOString() }
   enquiries.push(entry)
   console.log('New enquiry:', entry)
+
+  const result = await sendEnquiryEmails(entry)
+  if (!result.sent) {
+    console.warn('[enquiry] Email not sent:', result.reason)
+  }
+
   res.json({ ok: true, message: 'Thanks! Our team will reach out within 24 hours.' })
 })
 

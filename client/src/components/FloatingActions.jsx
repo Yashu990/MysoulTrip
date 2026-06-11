@@ -24,7 +24,7 @@ export default function FloatingActions() {
   const scrollTop = () => window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' })
 
   return (
-    <div className="fixed bottom-5 right-5 z-[60] flex flex-col items-center gap-3 sm:bottom-6 sm:right-6">
+    <div className="fixed bottom-5 left-5 z-[60] flex flex-col items-center gap-3 sm:bottom-6 sm:left-6">
       <AnimatePresence>
         {showTop && (
           <motion.button
@@ -53,8 +53,8 @@ export default function FloatingActions() {
           <span className="absolute inset-0 animate-ping rounded-full bg-[#25D366] opacity-30" />
         )}
         <Whatsapp className="relative h-7 w-7" />
-        <span className="pointer-events-none absolute right-16 whitespace-nowrap rounded-lg bg-navy-900 px-3 py-1.5 text-xs font-bold text-white opacity-0 shadow-lg transition group-hover:opacity-100">
-          Chat with us
+        <span className="pointer-events-none absolute left-16 whitespace-nowrap rounded-lg bg-navy-900 px-3 py-1.5 text-xs font-bold text-white opacity-0 shadow-lg transition group-hover:opacity-100">
+          WhatsApp us
         </span>
       </a>
     </div>

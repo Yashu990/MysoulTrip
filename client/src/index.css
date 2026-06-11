@@ -28,6 +28,27 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Kill stray horizontal scroll from decorative/overflowing elements.
+   `clip` (not `hidden`) so it doesn't break the sticky navbar. */
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+
+/* Hide the page scrollbar entirely for a full-bleed look.
+   Scrolling still works via wheel, touch, keyboard and the scroll-to-top button. */
+html {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* old Edge/IE */
+}
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  display: none; /* Chrome, Safari, new Edge */
+}
+
 body {
   margin: 0;
   font-family: var(--font-sans);
@@ -109,6 +130,24 @@ a {
   50% { opacity: 0.85; transform: scale(1.06); }
 }
 .animate-pulse-glow { animation: pulse-glow 3.5s ease-in-out infinite; }
+
+/* Ambient drifting leaves (glass-form scene) */
+@keyframes leaf-fall {
+  0% { transform: translateY(-15%); opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { transform: translateY(115vh); opacity: 0; }
+}
+@keyframes leaf-sway {
+  0% { transform: translateX(-14px) rotate(calc(var(--spin, 360deg) * -0.05)); }
+  100% { transform: translateX(14px) rotate(var(--spin, 360deg)); }
+}
+
+/* Typewriter caret blink */
+@keyframes tw-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
 
 /* Marquee for scrolling strips */
 @keyframes marquee {

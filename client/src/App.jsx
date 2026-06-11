@@ -8,6 +8,7 @@ import WhyTravel from './components/WhyTravel'
 import RadialShowcase from './components/RadialShowcase'
 import MomentsGallery from './components/MomentsGallery'
 import FloatingActions from './components/FloatingActions'
+import ChatWidget from './components/ChatWidget'
 import Testimonials from './components/Testimonials'
 import ExploreKumaon from './components/ExploreKumaon'
 import FeaturedExperiences from './components/FeaturedExperiences'
@@ -22,6 +23,9 @@ import DestinationPage from './components/DestinationPage'
 import SpiritualPage from './components/SpiritualPage'
 import PackagesPage from './components/PackagesPage'
 import PackageDetail from './components/PackageDetail'
+import GroupToursPage from './components/GroupToursPage'
+import BlogPage from './components/BlogPage'
+import BlogPost from './components/BlogPost'
 import SplashScreen from './components/SplashScreen'
 
 function normalizeHomeData(data) {
@@ -41,6 +45,9 @@ function getCurrentPage() {
   if (pathname === '/contact-us') return 'contact'
   if (pathname === '/packages') return 'packages'
   if (pathname.startsWith('/packages/')) return 'package-detail'
+  if (pathname === '/group-tours') return 'group-tours'
+  if (pathname === '/blog') return 'blog'
+  if (pathname.startsWith('/blog/')) return 'blog-post'
   if (pathname === '/destinations/spiritual') return 'spiritual'
   if (pathname === '/destinations') return 'destinations'
   return 'home'
@@ -49,6 +56,11 @@ function getCurrentPage() {
 function getPackageSlug() {
   const pathname = window.location.pathname.replace(/\/+$/, '')
   return pathname.startsWith('/packages/') ? pathname.slice('/packages/'.length) : null
+}
+
+function getBlogSlug() {
+  const pathname = window.location.pathname.replace(/\/+$/, '')
+  return pathname.startsWith('/blog/') ? pathname.slice('/blog/'.length) : null
 }
 
 function HomePage({ data, openModal, handleBook }) {
@@ -157,6 +169,9 @@ export default function App() {
           {page === 'contact' && <ContactPage onPlan={() => openModal()} onSubmitMessage={handleContactMessage} />}
           {page === 'packages' && <PackagesPage onPlan={() => openModal()} onBook={handleBook} />}
           {page === 'package-detail' && <PackageDetail id={getPackageSlug()} onPlan={() => openModal()} onBook={handleBook} />}
+          {page === 'group-tours' && <GroupToursPage onPlan={() => openModal()} onBook={handleBook} />}
+          {page === 'blog' && <BlogPage onSubscribe={handleSubscribe} />}
+          {page === 'blog-post' && <BlogPost id={getBlogSlug()} onPlan={() => openModal()} />}
           {page === 'destinations' && <DestinationPage onPlan={() => openModal()} />}
           {page === 'spiritual' && <SpiritualPage onPlan={() => openModal()} />}
           {page === 'home' && <HomePage data={data} openModal={openModal} handleBook={handleBook} />}
@@ -173,6 +188,7 @@ export default function App() {
       />
       <Toast message={toast} />
       <FloatingActions />
+      <ChatWidget />
     </div>
   )
 }

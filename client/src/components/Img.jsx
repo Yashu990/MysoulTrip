@@ -15,7 +15,7 @@ export default function Img({ src, alt = '', ...imgProps }) {
   if (!webp) return <img src={src} alt={alt} {...imgProps} />
 
   return (
-    <picture>
+    <picture style={{ display: 'contents' }}>
       <source srcSet={webp} type="image/webp" />
       <img src={src} alt={alt} {...imgProps} />
     </picture>

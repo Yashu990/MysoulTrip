@@ -23,9 +23,9 @@ export const fallbackData = {
     { id: 'pandavkholi-adventure', day: '06', month: 'JUL', title: 'Pandavkholi Trek Adventure', duration: '4 Days / 4 Nights', seats: '6 Seats Left', price: 9999, image: '/images/IMG_9808.jpg' },
   ],
   blogs: [
-    { id: 'almora-hidden', title: 'Hidden Places Near Almora You Must Visit', date: 'May 12, 2024', image: '/images/IMG_0313.jpg' },
-    { id: 'dwarahat-different', title: 'Why Dwarahat is Different from Other Hill Stations', date: 'May 05, 2024', image: '/images/IMG_9810.jpg' },
-    { id: 'binsar-best-time', title: 'Best Time to Visit Binsar Wildlife Sanctuary', date: 'Apr 28, 2024', image: '/images/IMG_9808.jpg' },
+    { id: 'hidden-himalayan-villages', title: "7 Hidden Himalayan Villages You Haven't Heard Of - Yet", date: 'Jun 6, 2026', image: '/images/blog/hidden-himalayan-villages.jpg' },
+    { id: 'slow-travel-2026', title: 'Slow Travel: Why 2026 Is the Year to Unplug in the Hills', date: 'Jun 2, 2026', image: '/images/blog/slow-travel-2026.jpg' },
+    { id: 'babaji-cave-guide', title: "A Beginner's Guide to the Babaji Cave Pilgrimage", date: 'May 28, 2026', image: '/images/blog/babaji-cave-guide.jpg' },
   ],
   review: {
     name: 'Ananya Sharma',

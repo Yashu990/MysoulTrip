@@ -14,7 +14,7 @@ function Stories({ blogs }) {
 
       <div className="space-y-4">
         {blogs.map((b) => (
-          <a key={b.id} href="#" className="group flex items-center gap-3">
+          <a key={b.id} href={`/blog/${b.id}`} className="group flex items-center gap-3">
             <Img src={b.image} alt={b.title} loading="lazy" className="h-16 w-16 shrink-0 rounded-lg object-cover ring-1 ring-black/5" />
             <div className="leading-tight">
               <h3 className="text-sm font-semibold leading-snug text-navy-800 transition group-hover:text-gold-600">{b.title}</h3>
