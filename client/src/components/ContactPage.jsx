@@ -43,7 +43,7 @@ export default function ContactPage({ onPlan, onSubmitMessage }) {
   }
 
   return (
-    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#fffdf8_48%,#ffffff_100%)]">
+    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#f7fcff_48%,#ffffff_100%)]">
       <section className="section-shell px-4 pb-6 pt-6 sm:px-6 sm:pb-8 sm:pt-8">
         <div className="relative overflow-hidden rounded-[2rem] shadow-[0_18px_50px_rgba(15,31,61,0.12)] ring-1 ring-black/5">
           <img
@@ -143,7 +143,7 @@ export default function ContactPage({ onPlan, onSubmitMessage }) {
                 value={form.name}
                 onChange={updateField('name')}
                 placeholder="Your Name"
-                className="rounded-xl border border-[#e7e3d8] px-4 py-3 text-sm text-navy-800 outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10"
+                className="rounded-xl border border-[#dceff6] px-4 py-3 text-sm text-navy-800 outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10"
               />
               <input
                 type="email"
@@ -151,7 +151,7 @@ export default function ContactPage({ onPlan, onSubmitMessage }) {
                 value={form.email}
                 onChange={updateField('email')}
                 placeholder="Your Email"
-                className="rounded-xl border border-[#e7e3d8] px-4 py-3 text-sm text-navy-800 outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10"
+                className="rounded-xl border border-[#dceff6] px-4 py-3 text-sm text-navy-800 outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10"
               />
               <input
                 type="tel"
@@ -159,14 +159,14 @@ export default function ContactPage({ onPlan, onSubmitMessage }) {
                 value={form.phone}
                 onChange={updateField('phone')}
                 placeholder="Phone Number"
-                className="rounded-xl border border-[#e7e3d8] px-4 py-3 text-sm text-navy-800 outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10"
+                className="rounded-xl border border-[#dceff6] px-4 py-3 text-sm text-navy-800 outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10"
               />
               <input
                 type="text"
                 value={form.subject}
                 onChange={updateField('subject')}
                 placeholder="Subject"
-                className="rounded-xl border border-[#e7e3d8] px-4 py-3 text-sm text-navy-800 outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10"
+                className="rounded-xl border border-[#dceff6] px-4 py-3 text-sm text-navy-800 outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10"
               />
             </div>
 
@@ -176,10 +176,10 @@ export default function ContactPage({ onPlan, onSubmitMessage }) {
               value={form.message}
               onChange={updateField('message')}
               placeholder="Your Message"
-              className="w-full rounded-xl border border-[#e7e3d8] px-4 py-3 text-sm text-navy-800 outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10"
+              className="w-full rounded-xl border border-[#dceff6] px-4 py-3 text-sm text-navy-800 outline-none transition focus:border-gold-500 focus:ring-4 focus:ring-gold-500/10"
             />
 
-            <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#ece5d6] bg-cream-50 px-4 py-3">
+            <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border border-[#dceff6] bg-cream-50 px-4 py-3">
               <span className="text-sm font-semibold text-navy-800/80">We usually reply within 24 hours.</span>
               <button
                 type="submit"
@@ -232,7 +232,7 @@ export default function ContactPage({ onPlan, onSubmitMessage }) {
       </Stagger>
 
       <section className="section-shell px-4 pb-10 pt-2 sm:px-6">
-        <div className="flex flex-col items-start justify-between gap-6 rounded-[1.75rem] border border-[#eee3ce] bg-white px-6 py-6 shadow-[0_10px_32px_rgba(15,31,61,0.06)] sm:flex-row sm:items-center">
+        <div className="flex flex-col items-start justify-between gap-6 rounded-[1.75rem] border border-[#dceff6] bg-white px-6 py-6 shadow-[0_10px_32px_rgba(15,31,61,0.06)] sm:flex-row sm:items-center">
           <div className="flex items-start gap-4">
             <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full border-2 border-navy-800 text-navy-800">
               <Compass className="h-6 w-6" />

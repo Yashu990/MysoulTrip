@@ -128,7 +128,7 @@ const iconCycle = [Lotus, Tree, Hiking]
 
 export default function DestinationPage({ onPlan }) {
   return (
-    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#fffdf8_48%,#ffffff_100%)]">
+    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#f7fcff_48%,#ffffff_100%)]">
       <section className="px-0 pt-0">
         <div className="relative min-h-[20rem] overflow-hidden">
           <img
@@ -215,7 +215,7 @@ export default function DestinationPage({ onPlan }) {
               </div>
             </div>
 
-            <div className="mt-8 border-t border-[#efe6d3] pt-6">
+            <div className="mt-8 border-t border-[#dceff6] pt-6">
               <p className="text-sm font-extrabold uppercase tracking-wide text-navy-800">Best Time to Visit</p>
               <div className="mt-4 space-y-3">
                 {seasons.map((season) => (
@@ -283,7 +283,7 @@ export default function DestinationPage({ onPlan }) {
       </section>
 
       <section className="section-shell px-4 pb-10 sm:px-6">
-        <div className="flex flex-col items-start justify-between gap-5 rounded-[1.65rem] border border-[#eee3ce] bg-white px-6 py-5 shadow-[0_12px_34px_rgba(15,31,61,0.06)] sm:flex-row sm:items-center">
+        <div className="flex flex-col items-start justify-between gap-5 rounded-[1.65rem] border border-[#dceff6] bg-white px-6 py-5 shadow-[0_12px_34px_rgba(15,31,61,0.06)] sm:flex-row sm:items-center">
           <div className="flex items-start gap-4">
             <span className="grid h-14 w-14 shrink-0 place-items-center rounded-full bg-navy-50 text-navy-800">
               <MapPin className="h-7 w-7" />

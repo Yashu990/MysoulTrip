@@ -6,7 +6,7 @@ import { Lotus, Mountain, Compass, Leaf, Sparkle, MapPin, Sun } from './icons'
  * mountain silhouettes, so every post gets a unique, crisp, on-brand cover.
  */
 const THEMES = {
-  spiritual: { sky: ['#fbe7c0', '#f5bc4a', '#d99211'], far: '#9a6a1f', mid: '#5a3d12', near: '#2a1c08', sun: '#fff4d6', icon: Lotus },
+  spiritual: { sky: ['#fbe7c0', '#63d1ea', '#179fc8'], far: '#9a6a1f', mid: '#5a3d12', near: '#2a1c08', sun: '#fff4d6', icon: Lotus },
   destinations: { sky: ['#dbeafe', '#7fa9e0', '#3a5f96'], far: '#2f4d7a', mid: '#1d3358', near: '#0c1a30', sun: '#eaf3ff', icon: MapPin },
   guides: { sky: ['#ece3f6', '#a98fd0', '#6b4ea0'], far: '#553d80', mid: '#3a2a5a', near: '#1a1230', sun: '#f3ecff', icon: Compass },
   culture: { sky: ['#ffe2d0', '#f0a07a', '#cf6a44'], far: '#a04e2e', mid: '#6e351c', near: '#371a0f', sun: '#fff0e6', icon: Sparkle },

@@ -49,7 +49,7 @@ export default function RadialShowcase({ onExplore }) {
               <motion.line
                 key={o.title}
                 x1="50" y1="50" x2={o.anchor.x} y2={o.anchor.y}
-                stroke="#edae2b" strokeWidth="0.25" strokeDasharray="1.5 1.5"
+                stroke="#23b7df" strokeWidth="0.25" strokeDasharray="1.5 1.5"
                 initial={{ pathLength: 0, opacity: 0 }}
                 whileInView={{ pathLength: 1, opacity: 0.5 }}
                 viewport={{ once: true }}
@@ -107,7 +107,7 @@ export default function RadialShowcase({ onExplore }) {
             <motion.button
               key={o.title}
               onClick={onExplore}
-              className="group flex flex-col items-center rounded-2xl bg-white px-4 py-5 text-center shadow-[0_10px_28px_rgba(15,31,61,0.08)] ring-1 ring-[#efe3ca]"
+              className="group flex flex-col items-center rounded-2xl bg-white px-4 py-5 text-center shadow-[0_10px_28px_rgba(15,31,61,0.08)] ring-1 ring-[#dceff6]"
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}

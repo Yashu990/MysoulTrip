@@ -75,7 +75,7 @@ function PackageCard({ pkg, onPlan }) {
           ))}
         </ul>
 
-        <div className="mt-5 flex items-end justify-between gap-3 border-t border-[#efe6d3] pt-4">
+        <div className="mt-5 flex items-end justify-between gap-3 border-t border-[#dceff6] pt-4">
           <PriceTag price={pkg.price} oldPrice={pkg.oldPrice} />
         </div>
 
@@ -129,7 +129,7 @@ export default function PackagesPage({ onPlan, onBook }) {
   const visible = filter === 'All' ? packages : packages.filter((p) => p.category === filter)
 
   return (
-    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#fffdf8_48%,#ffffff_100%)]">
+    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#f7fcff_48%,#ffffff_100%)]">
       {/* Hero */}
       <section className="relative">
         <div className="relative min-h-[22rem] overflow-hidden sm:min-h-[24rem]">
@@ -202,7 +202,7 @@ export default function PackagesPage({ onPlan, onBook }) {
       </section>
 
       {/* What's included */}
-      <section className="border-y border-[#eee6d7] bg-cream-50 py-14">
+      <section className="border-y border-[#dceff6] bg-cream-50 py-14">
         <div className="section-shell px-4 sm:px-6">
           <Reveal y={18} className="mb-8 text-center">
             <h2 className="font-display text-[1.9rem] font-bold text-navy-800 sm:text-[2.4rem]">Every Package Includes</h2>

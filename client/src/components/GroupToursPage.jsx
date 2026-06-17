@@ -101,7 +101,7 @@ function DepartureCard({ d, onBook }) {
 
         <div className="mt-4"><SeatBar total={d.total} left={d.left} /></div>
 
-        <div className="mt-4 flex items-end justify-between gap-2 border-t border-[#f0ead9] pt-4">
+        <div className="mt-4 flex items-end justify-between gap-2 border-t border-[#dceff6] pt-4">
           <div className="flex items-end gap-2">
             <span className="font-display text-2xl font-bold text-navy-800">₹{d.price.toLocaleString('en-IN')}</span>
             {d.oldPrice && <span className="mb-0.5 text-xs text-navy-800/40 line-through">₹{d.oldPrice.toLocaleString('en-IN')}</span>}
@@ -149,7 +149,7 @@ export default function GroupToursPage({ onPlan, onBook }) {
   const visible = filter === 'All' ? departures : departures.filter((d) => d.category === filter)
 
   return (
-    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#fffdf8_48%,#ffffff_100%)]">
+    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#f7fcff_48%,#ffffff_100%)]">
       {/* Hero */}
       <section className="relative">
         <div className="relative min-h-[24rem] overflow-hidden sm:min-h-[27rem]">
@@ -228,7 +228,7 @@ export default function GroupToursPage({ onPlan, onBook }) {
       </section>
 
       {/* How it works */}
-      <section className="border-y border-[#eee6d7] bg-cream-50 py-14 mt-14">
+      <section className="border-y border-[#dceff6] bg-cream-50 py-14 mt-14">
         <div className="section-shell px-4 sm:px-6">
           <Reveal y={18} className="mb-10 text-center">
             <h2 className="font-display text-[2rem] font-bold text-navy-800 sm:text-[2.5rem]">How It Works</h2>

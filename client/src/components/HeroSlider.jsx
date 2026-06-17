@@ -207,7 +207,7 @@ export default function HeroSlider({ destinations = [], onExplore, onPlan }) {
                   className="h-1.5 rounded-full transition-all duration-300"
                   style={{
                     width: i === index ? '2rem' : '0.5rem',
-                    background: i === index ? '#edae2b' : 'rgba(255,255,255,0.4)',
+                    background: i === index ? '#23b7df' : 'rgba(255,255,255,0.4)',
                   }}
                 />
               ))}

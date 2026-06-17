@@ -43,7 +43,7 @@ export default function FeaturedExperiences({ experiences, onExplore }) {
                   <h3 className="text-[1.02rem] font-extrabold leading-snug text-navy-800 line-clamp-2">{e.title}</h3>
                   <p className="mt-2 line-clamp-2 text-xs leading-relaxed text-gray-500">{e.desc}</p>
 
-                  <span className="mt-4 inline-flex items-center gap-1.5 border-t border-[#f0ead9] pt-3 text-sm font-extrabold text-gold-700">
+                  <span className="mt-4 inline-flex items-center gap-1.5 border-t border-[#dceff6] pt-3 text-sm font-extrabold text-gold-700">
                     Explore
                     <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </span>

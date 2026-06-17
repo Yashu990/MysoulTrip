@@ -27,6 +27,7 @@ import GroupToursPage from './components/GroupToursPage'
 import BlogPage from './components/BlogPage'
 import BlogPost from './components/BlogPost'
 import SplashScreen from './components/SplashScreen'
+import FigmaHomePage from './components/FigmaHomePage'
 
 function normalizeHomeData(data) {
   return {
@@ -152,11 +153,13 @@ export default function App() {
     post('/api/contact', form, 'Thanks! Our team will get back to you within 24 hours.')
   }
 
+  const isHomePage = page === 'home'
+
   return (
     <div className="min-h-screen bg-white">
       <SplashScreen />
-      {page !== 'contact' && <TopBar />}
-      <Navbar currentPage={page} onEnquire={() => openModal()} />
+      {!isHomePage && page !== 'contact' && <TopBar />}
+      {!isHomePage && <Navbar currentPage={page} onEnquire={() => openModal()} />}
 
       <AnimatePresence mode="wait">
         <motion.div
@@ -174,11 +177,18 @@ export default function App() {
           {page === 'blog-post' && <BlogPost id={getBlogSlug()} onPlan={() => openModal()} />}
           {page === 'destinations' && <DestinationPage onPlan={() => openModal()} />}
           {page === 'spiritual' && <SpiritualPage onPlan={() => openModal()} />}
-          {page === 'home' && <HomePage data={data} openModal={openModal} handleBook={handleBook} />}
+          {page === 'home' && (
+            <FigmaHomePage
+              data={data}
+              openModal={openModal}
+              handleBook={handleBook}
+              onSubscribe={handleSubscribe}
+            />
+          )}
         </motion.div>
       </AnimatePresence>
 
-      <Footer onSubscribe={handleSubscribe} />
+      {!isHomePage && <Footer onSubscribe={handleSubscribe} />}
 
       <PlanTripModal
         open={modalOpen}

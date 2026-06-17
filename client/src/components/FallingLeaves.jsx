@@ -8,7 +8,7 @@ import { useReducedMotion } from 'framer-motion'
  */
 
 // Brand-warm autumn-Himalaya palette.
-const COLORS = ['#edae2b', '#f5bc4a', '#d99211', '#e0795b', '#c9912f']
+const COLORS = ['#23b7df', '#63d1ea', '#179fc8', '#e0795b', '#c9912f']
 
 // Hand-tuned variety so it never looks like a uniform grid.
 const LEAVES = [

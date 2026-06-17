@@ -10,7 +10,7 @@ const reasons = [
 
 export default function WhyTravel() {
   return (
-    <section id="why" className="border-y border-[#eee6d7] bg-white">
+    <section id="why" className="border-y border-[#dceff6] bg-white">
       <div className="section-shell grid grid-cols-1 gap-8 px-4 py-8 sm:px-6 lg:grid-cols-[1.15fr_4fr] lg:items-center">
         <Reveal x={-24} y={0}>
           <h2 className="font-display text-[2rem] font-bold leading-[0.95] text-navy-800">
@@ -29,7 +29,7 @@ export default function WhyTravel() {
               <motion.div
                 whileHover={{ y: -6 }}
                 transition={{ type: 'spring', stiffness: 300, damping: 18 }}
-                className="group flex h-full items-start gap-3 rounded-2xl bg-cream-50 px-4 py-4 ring-1 ring-[#efe3ca] transition-shadow hover:shadow-[0_16px_36px_rgba(15,31,61,0.12)]"
+                className="group flex h-full items-start gap-3 rounded-2xl bg-cream-50 px-4 py-4 ring-1 ring-[#dceff6] transition-shadow hover:shadow-[0_16px_36px_rgba(15,31,61,0.12)]"
               >
                 <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white text-gold-600 ring-2 ring-gold-500/30 shadow-sm transition-all duration-300 group-hover:scale-110 group-hover:bg-gold-500 group-hover:text-white">
                   <r.icon className="h-5 w-5" />

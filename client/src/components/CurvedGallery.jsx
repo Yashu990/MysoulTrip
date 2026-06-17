@@ -119,7 +119,7 @@ export default function CurvedGallery({ images = [], captions = [] }) {
               className="h-1.5 rounded-full transition-all duration-300"
               style={{
                 width: i === active ? '1.75rem' : '0.5rem',
-                background: i === active ? '#edae2b' : 'rgba(255,255,255,0.35)',
+                background: i === active ? '#23b7df' : 'rgba(255,255,255,0.35)',
               }}
             />
           ))}

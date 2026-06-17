@@ -41,7 +41,7 @@ export default function PackageDetail({ id, onPlan, onBook }) {
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(`Hi MySoulTrip! I'm interested in the "${pkg.title}" package (${pkg.duration}). Please share details.`)}`
 
   return (
-    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#fffdf8_48%,#ffffff_100%)]">
+    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#f7fcff_48%,#ffffff_100%)]">
       {/* Hero */}
       <section className="relative">
         <div className="relative min-h-[24rem] overflow-hidden sm:min-h-[28rem]">
@@ -197,7 +197,7 @@ export default function PackageDetail({ id, onPlan, onBook }) {
               Customise This Trip
             </button>
 
-            <div className="mt-5 space-y-2 border-t border-[#efe6d3] pt-4 text-xs text-navy-800/65">
+            <div className="mt-5 space-y-2 border-t border-[#dceff6] pt-4 text-xs text-navy-800/65">
               <p className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-gold-600" /> Free cancellation up to 15 days prior</p>
               <p className="flex items-center gap-2"><Check className="h-4 w-4 text-gold-600" /> Reply within 24 hours</p>
             </div>

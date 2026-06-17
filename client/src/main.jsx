@@ -23,7 +23,7 @@ class RootErrorBoundary extends Component {
     }
 
     return (
-      <div className="min-h-screen bg-[#fffdf8] px-6 py-10 text-navy-900">
+      <div className="min-h-screen bg-[#f7fcff] px-6 py-10 text-navy-900">
         <div className="mx-auto max-w-3xl rounded-3xl border border-red-200 bg-white p-6 shadow-lg">
           <p className="text-xs font-bold uppercase tracking-[0.24em] text-red-500">Render Error</p>
           <h1 className="mt-2 font-display text-4xl font-bold text-navy-900">

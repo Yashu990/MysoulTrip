@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { packages } from '../data/packages'
-import { ArrowRight, ChevronDown, Compass, Whatsapp, Check } from './icons'
+import { ArrowRight, ChevronDown } from './icons'
+import BotIcon from './BotIcon'
 
 const WHATSAPP = '918368479749'
 const PHONE = '+91 8368479749'
@@ -217,11 +218,16 @@ export default function ChatWidget() {
             <span className="hidden rounded-full bg-white px-3 py-2 text-sm font-bold text-navy-800 shadow-[0_8px_24px_rgba(15,31,61,0.18)] sm:block">
               Chat with us
             </span>
-            <span className="relative grid h-14 w-14 place-items-center rounded-full bg-gradient-to-br from-navy-700 to-navy-900 text-gold-400 shadow-[0_12px_30px_rgba(15,31,61,0.4)]">
-              <span className="absolute inset-0 animate-ping rounded-full bg-navy-700 opacity-20" />
-              <Compass className="relative h-7 w-7" />
-              {!seen && <span className="absolute -right-0.5 -top-0.5 grid h-5 w-5 place-items-center rounded-full bg-gold-500 text-[11px] font-bold text-navy-900">1</span>}
-            </span>
+            <motion.span
+              animate={{ y: [0, -3, 0] }}
+              transition={{ repeat: Infinity, duration: 2.2, ease: 'easeInOut' }}
+              whileHover={{ rotate: [0, -8, 8, -4, 0], transition: { duration: 0.5 } }}
+              className="relative grid h-16 w-16 place-items-center rounded-full bg-gradient-to-br from-navy-700 to-navy-900 shadow-[0_12px_30px_rgba(15,31,61,0.45)] ring-2 ring-gold-500/30"
+            >
+              <span className="absolute inset-0 animate-ping rounded-full bg-gold-500 opacity-15" />
+              <BotIcon className="relative h-11 w-11" />
+              {!seen && <span className="absolute -right-0.5 -top-0.5 grid h-5 w-5 place-items-center rounded-full bg-gold-500 text-[11px] font-bold text-navy-900 ring-2 ring-white">1</span>}
+            </motion.span>
           </motion.button>
         )}
       </AnimatePresence>
@@ -240,8 +246,8 @@ export default function ChatWidget() {
             {/* Header */}
             <div className="relative flex items-center gap-3 bg-gradient-to-r from-navy-800 to-navy-900 px-4 py-4 text-white">
               <span aria-hidden className="animate-float-slow absolute -right-6 -top-8 h-24 w-24 rounded-full bg-gold-500/20 blur-2xl" />
-              <span className="relative grid h-10 w-10 place-items-center rounded-full bg-white/10 text-gold-400 ring-1 ring-white/20">
-                <Compass className="h-6 w-6" />
+              <span className="relative grid h-10 w-10 place-items-center rounded-full bg-white/10 ring-1 ring-white/20">
+                <BotIcon className="h-8 w-8" />
               </span>
               <div className="relative leading-tight">
                 <p className="text-sm font-extrabold">Soul · MySoulTrip Assistant</p>

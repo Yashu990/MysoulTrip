@@ -31,7 +31,7 @@ export default function BlogPost({ id, onPlan }) {
   const relatedFinal = (related.length ? related : blogPosts.filter((p) => p.id !== post.id)).slice(0, 3)
 
   return (
-    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#fffdf8_48%,#ffffff_100%)]">
+    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#f7fcff_48%,#ffffff_100%)]">
       {/* Cover hero */}
       <section className="relative">
         <div className="relative min-h-[20rem] overflow-hidden sm:min-h-[26rem]">
@@ -66,7 +66,7 @@ export default function BlogPost({ id, onPlan }) {
           ))}
 
           {/* Inline CTA */}
-          <div className="mt-10 rounded-2xl border border-[#eee3ce] bg-cream-50 p-6 text-center">
+          <div className="mt-10 rounded-2xl border border-[#dceff6] bg-cream-50 p-6 text-center">
             <p className="font-display text-xl font-bold text-navy-800">Want to experience this for real?</p>
             <p className="mt-1 text-sm text-navy-800/65">Let us craft a trip around it — tailored to your dates and pace.</p>
             <button onClick={onPlan} className="mt-4 inline-flex items-center gap-2 rounded-xl bg-gold-500 px-6 py-3 text-sm font-extrabold text-navy-900 transition hover:bg-gold-400">

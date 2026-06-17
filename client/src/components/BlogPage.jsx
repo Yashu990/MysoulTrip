@@ -45,7 +45,7 @@ function PostCard({ post }) {
         <Meta post={post} />
         <h3 className="mt-2 text-[1.12rem] font-extrabold leading-snug text-navy-800 line-clamp-2 transition-colors group-hover:text-gold-700">{post.title}</h3>
         <p className="mt-2 line-clamp-2 flex-1 text-sm leading-relaxed text-navy-800/60">{post.excerpt}</p>
-        <div className="mt-4 flex items-center justify-between border-t border-[#f0ead9] pt-3">
+        <div className="mt-4 flex items-center justify-between border-t border-[#dceff6] pt-3">
           <Author name={post.author} />
           <ArrowRight className="h-4 w-4 text-gold-600 transition-transform duration-300 group-hover:translate-x-1" />
         </div>
@@ -63,7 +63,7 @@ export default function BlogPage({ onSubscribe }) {
   const visible = filter === 'All' ? rest : rest.filter((p) => p.category === filter)
 
   return (
-    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#fffdf8_48%,#ffffff_100%)]">
+    <main className="bg-[linear-gradient(180deg,#ffffff_0%,#f7fcff_48%,#ffffff_100%)]">
       {/* Hero */}
       <section className="relative overflow-hidden bg-navy-900 py-16 sm:py-20">
         <div aria-hidden className="pointer-events-none absolute inset-0">

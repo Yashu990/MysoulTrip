@@ -13,7 +13,7 @@ export default function Testimonials({ reviews }) {
   const list = Array.isArray(reviews) && reviews.length ? reviews : fallbackReviews
 
   return (
-    <section id="reviews" className="relative overflow-hidden border-y border-[#eee6d7] bg-cream-50 py-16 sm:py-20">
+    <section id="reviews" className="relative overflow-hidden border-y border-[#dceff6] bg-cream-50 py-16 sm:py-20">
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -left-20 top-10 h-72 w-72 rounded-full bg-gold-500/10 blur-[100px]" />
         <div className="absolute -right-16 bottom-0 h-72 w-72 rounded-full bg-navy-600/5 blur-[100px]" />
@@ -64,7 +64,7 @@ export default function Testimonials({ reviews }) {
                   ))}
                 </div>
                 <blockquote className="flex-1 text-sm leading-relaxed text-navy-800/78">{r.text}</blockquote>
-                <figcaption className="mt-5 flex items-center gap-3 border-t border-[#efe3ca] pt-4">
+                <figcaption className="mt-5 flex items-center gap-3 border-t border-[#dceff6] pt-4">
                   <span className="grid h-11 w-11 shrink-0 place-items-center rounded-full bg-gradient-to-br from-navy-700 to-navy-900 text-xs font-bold text-white">
                     {initials(r.name)}
                   </span>

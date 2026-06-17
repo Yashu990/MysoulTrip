@@ -4,7 +4,7 @@ import Img from './Img'
 
 // Refined, brand-led accent palette (premium tones, not neon) cycled per day.
 const ACCENTS = [
-  { from: '#f5bc4a', to: '#d99211' }, // gold
+  { from: '#63d1ea', to: '#179fc8' }, // gold
   { from: '#3a7d6e', to: '#235c4f' }, // teal-green
   { from: '#e0795b', to: '#c75a3c' }, // terracotta
   { from: '#4a78b5', to: '#2f5588' }, // blue
