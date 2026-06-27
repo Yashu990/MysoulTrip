@@ -28,6 +28,8 @@ import BlogPage from './components/BlogPage'
 import BlogPost from './components/BlogPost'
 import SplashScreen from './components/SplashScreen'
 import FigmaHomePage from './components/FigmaHomePage'
+import WhyChooseUsPage from './components/WhyChooseUsPage'
+import ThemedTourPage from './components/ThemedTourPage'
 
 function normalizeHomeData(data) {
   return {
@@ -44,6 +46,10 @@ function normalizeHomeData(data) {
 function getCurrentPage() {
   const pathname = window.location.pathname.replace(/\/+$/, '') || '/'
   if (pathname === '/contact-us') return 'contact'
+  if (pathname === '/why-choose-us') return 'why-choose-us'
+  if (pathname === '/bike-tour-uttarakhand-explore') return 'bike-tour'
+  if (pathname === '/family-tour') return 'family-tour'
+  if (pathname === '/solo-trip') return 'solo-trip'
   if (pathname === '/packages') return 'packages'
   if (pathname.startsWith('/packages/')) return 'package-detail'
   if (pathname === '/group-tours') return 'group-tours'
@@ -170,6 +176,10 @@ export default function App() {
           transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
         >
           {page === 'contact' && <ContactPage onPlan={() => openModal()} onSubmitMessage={handleContactMessage} />}
+          {page === 'why-choose-us' && <WhyChooseUsPage onPlan={() => openModal()} />}
+          {page === 'bike-tour' && <ThemedTourPage pageId='bike-tour' onPlan={() => openModal()} />}
+          {page === 'family-tour' && <ThemedTourPage pageId='family-tour' onPlan={() => openModal()} />}
+          {page === 'solo-trip' && <ThemedTourPage pageId='solo-trip' onPlan={() => openModal()} />}
           {page === 'packages' && <PackagesPage onPlan={() => openModal()} onBook={handleBook} />}
           {page === 'package-detail' && <PackageDetail id={getPackageSlug()} onPlan={() => openModal()} onBook={handleBook} />}
           {page === 'group-tours' && <GroupToursPage onPlan={() => openModal()} onBook={handleBook} />}
@@ -202,3 +212,5 @@ export default function App() {
     </div>
   )
 }
+
+

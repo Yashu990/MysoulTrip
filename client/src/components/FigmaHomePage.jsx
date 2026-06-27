@@ -1,10 +1,12 @@
 import { useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import Logo from './Logo'
+import { themedTourLinks } from '../data/themedTours'
 import {
   ArrowRight,
   Calendar,
   Check,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   Clock,
@@ -24,11 +26,17 @@ import {
   Youtube,
 } from './icons'
 
+const destinationLinks = [
+  { label: 'All Destinations', href: '/destinations' },
+  { label: 'Spiritual Destinations', href: '/destinations/spiritual' },
+]
+
 const navLinks = [
   { label: 'Home', href: '/' },
-  { label: 'Destination', href: '/destinations' },
+  { label: 'Why Choose Us', href: '/why-choose-us' },
+  { label: 'Tours', href: '/bike-tour-uttarakhand-explore', children: themedTourLinks },
+  { label: 'Destinations', href: '/destinations', children: destinationLinks },
   { label: 'About Us', href: '#about' },
-  { label: 'Tour', href: '#popular' },
   { label: 'Testimonial', href: '#testimonials' },
   { label: 'Blog', href: '/blog' },
 ]
@@ -170,17 +178,43 @@ function PlaneTrailDoodle({ className = '' }) {
 
 function HomeNav({ onEnquire }) {
   const [open, setOpen] = useState(false)
+  const [mobileToursOpen, setMobileToursOpen] = useState(false)
+  const [mobileDestinationsOpen, setMobileDestinationsOpen] = useState(false)
 
   return (
     <header className="absolute inset-x-0 top-0 z-30">
       <div className="mx-auto flex w-[min(100%-32px,1280px)] items-center justify-between gap-4 py-6 lg:gap-8">
         <Logo />
         <nav className="hidden items-center gap-10 text-[17px] font-medium text-[#0a1730] lg:flex">
-          {navLinks.map((link) => (
-            <a key={link.label} href={link.href} className="transition hover:text-[#23b7df]">
-              {link.label}
-            </a>
-          ))}
+          {navLinks.map((link) => {
+            if (link.children) {
+              return (
+                <div key={link.label} className="group relative">
+                  <a href={link.href} className="flex items-center gap-1 transition hover:text-[#23b7df]">
+                    {link.label}
+                    <ChevronDown className="h-4 w-4 opacity-60 transition-transform group-hover:rotate-180" />
+                  </a>
+                  <div className="invisible absolute left-0 top-full z-30 w-[320px] translate-y-3 rounded-2xl border border-slate-200 bg-white/96 p-2 opacity-0 shadow-[0_20px_45px_rgba(6,24,54,0.14)] transition-all duration-200 group-hover:visible group-hover:translate-y-2 group-hover:opacity-100">
+                    {link.children.map((child) => (
+                      <a
+                        key={child.href}
+                        href={child.href}
+                        className="block rounded-xl px-4 py-3 text-sm font-semibold text-[#0a1730] transition hover:bg-[#ecf8fd] hover:text-[#23b7df]"
+                      >
+                        {child.label}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              )
+            }
+
+            return (
+              <a key={link.label} href={link.href} className="transition hover:text-[#23b7df]">
+                {link.label}
+              </a>
+            )
+          })}
         </nav>
         <div className="flex items-center gap-2">
           <button
@@ -216,16 +250,54 @@ function HomeNav({ onEnquire }) {
       {open && (
         <div className="mx-auto w-[min(100%-32px,1280px)] lg:hidden">
           <nav className="flex flex-col gap-1 rounded-2xl border border-slate-200 bg-white/95 p-3 text-[16px] font-semibold text-[#0a1730] shadow-[0_18px_40px_rgba(6,24,54,0.12)] backdrop-blur">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setOpen(false)}
-                className="rounded-xl px-4 py-3 transition hover:bg-[#e9f6fb] hover:text-[#23b7df]"
-              >
-                {link.label}
-              </a>
-            ))}
+            {navLinks.map((link) => {
+              if (link.children) {
+                const isTours = link.label === 'Tours'
+                const isOpen = isTours ? mobileToursOpen : mobileDestinationsOpen
+                const toggleOpen = () => {
+                  if (isTours) setMobileToursOpen((value) => !value)
+                  else setMobileDestinationsOpen((value) => !value)
+                }
+
+                return (
+                  <div key={link.label} className="rounded-xl border border-slate-100 bg-slate-50/70 px-2 py-2">
+                    <button
+                      type="button"
+                      onClick={toggleOpen}
+                      className="flex w-full items-center justify-between rounded-lg px-2 py-2 text-left"
+                    >
+                      <span>{link.label}</span>
+                      <ChevronDown className={`h-4 w-4 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+                    </button>
+                    {isOpen && (
+                      <div className="mt-1 grid gap-1 pb-1">
+                        {link.children.map((child) => (
+                          <a
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setOpen(false)}
+                            className="rounded-lg px-3 py-2 text-sm font-semibold text-[#3c4f69] hover:bg-white hover:text-[#23b7df]"
+                          >
+                            {child.label}
+                          </a>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+              }
+
+              return (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-xl px-4 py-3 transition hover:bg-[#e9f6fb] hover:text-[#23b7df]"
+                >
+                  {link.label}
+                </a>
+              )
+            })}
           </nav>
         </div>
       )}
@@ -354,20 +426,20 @@ function PopularToursSection({ tours, onBook }) {
     <section id="popular" className="relative overflow-hidden bg-[#e9f6fb] px-4 py-20 sm:px-6">
       {/* faint travel doodles scattered across the whole section */}
       <div className="pointer-events-none absolute inset-0 select-none text-[#cbe7f2]">
-        <span className="absolute left-[3%] top-[14%] hidden text-[34px] sm:block">🧳</span>
-        <span className="absolute left-[8%] top-[42%] hidden text-[30px] sm:block">🌐</span>
-        <span className="absolute left-[5%] top-[68%] hidden text-[32px] sm:block">🎈</span>
-        <span className="absolute left-[16%] top-[8%] hidden text-[26px] md:block">✈</span>
-        <span className="absolute left-[22%] top-[60%] hidden text-[28px] md:block">📷</span>
-        <span className="absolute left-[34%] top-[10%] hidden text-[24px] lg:block">☂</span>
-        <span className="absolute left-[46%] top-[6%] hidden text-[26px] lg:block">🛶</span>
-        <span className="absolute right-[34%] top-[12%] hidden text-[24px] lg:block">🚗</span>
-        <span className="absolute right-[22%] top-[8%] hidden text-[28px] md:block">⛴</span>
-        <span className="absolute right-[14%] top-[40%] hidden text-[30px] md:block">🗼</span>
-        <span className="absolute right-[6%] top-[18%] hidden text-[30px] sm:block">🌴</span>
-        <span className="absolute right-[4%] top-[64%] hidden text-[28px] sm:block">👒</span>
-        <span className="absolute left-[28%] top-[82%] hidden text-[26px] lg:block">🧭</span>
-        <span className="absolute right-[28%] top-[78%] hidden text-[26px] lg:block">⛵</span>
+        <span className="absolute left-[3%] top-[14%] hidden text-[34px] sm:block">??</span>
+        <span className="absolute left-[8%] top-[42%] hidden text-[30px] sm:block">??</span>
+        <span className="absolute left-[5%] top-[68%] hidden text-[32px] sm:block">??</span>
+        <span className="absolute left-[16%] top-[8%] hidden text-[26px] md:block">?</span>
+        <span className="absolute left-[22%] top-[60%] hidden text-[28px] md:block">??</span>
+        <span className="absolute left-[34%] top-[10%] hidden text-[24px] lg:block">?</span>
+        <span className="absolute left-[46%] top-[6%] hidden text-[26px] lg:block">??</span>
+        <span className="absolute right-[34%] top-[12%] hidden text-[24px] lg:block">??</span>
+        <span className="absolute right-[22%] top-[8%] hidden text-[28px] md:block">?</span>
+        <span className="absolute right-[14%] top-[40%] hidden text-[30px] md:block">??</span>
+        <span className="absolute right-[6%] top-[18%] hidden text-[30px] sm:block">??</span>
+        <span className="absolute right-[4%] top-[64%] hidden text-[28px] sm:block">??</span>
+        <span className="absolute left-[28%] top-[82%] hidden text-[26px] lg:block">??</span>
+        <span className="absolute right-[28%] top-[78%] hidden text-[26px] lg:block">?</span>
       </div>
 
       <div className="relative mx-auto max-w-[1240px]">
@@ -557,8 +629,8 @@ function JourneyStatsSection() {
 function OffersSection() {
   return (
     <section className="relative overflow-hidden bg-white px-4 py-28 sm:px-6">
-      <div className="absolute -left-10 top-5 hidden text-5xl text-[#23b7df] lg:block">✈</div>
-      <div className="absolute bottom-10 right-8 hidden text-5xl text-[#23b7df] lg:block">✈</div>
+      <div className="absolute -left-10 top-5 hidden text-5xl text-[#23b7df] lg:block">?</div>
+      <div className="absolute bottom-10 right-8 hidden text-5xl text-[#23b7df] lg:block">?</div>
       <div className="mx-auto max-w-7xl">
         <SectionTitle kicker="Special Offers" title="Offers To Inspire You" />
         <div className="mt-14 grid gap-6 lg:grid-cols-3">
